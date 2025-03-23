@@ -34,21 +34,21 @@ namespace BirthdayApp
                 
                 if (((DateTime.Today.Year - birthday.Value.Year) > 135) || birthday > DateTime.Today)
                 {
-                    MessageBox.Show("tf??? not a valid date!!!");
+                    MessageBox.Show("This is not a valid date.");
                 }
                 else
                 {
                     MessageBox.Show($"Your birthday is {birthday.Value.ToShortDateString()}");
-                    MessageBox.Show($"Your age is {age}. btw ur {GetWesternZodiac(birthday.Value)} and {GetChineseZodiac(birthday.Value)}");
+                    MessageBox.Show($"Your age is {age}. Your western zodiac sign is {GetWesternZodiac(birthday.Value)} and your chinese zodiac sign is {GetChineseZodiac(birthday.Value)}");
                     if(DateTime.Today.Day==birthday.Value.Day && DateTime.Today.Month == birthday.Value.Month)
                     {
-                        MessageBox.Show("Damn its your birthday!!! yuppiee");
+                        MessageBox.Show("Today is your birthday! Congrats!");
                     }
                 }
             }
             else
             {
-                MessageBox.Show("error!!!");
+                MessageBox.Show("Error.");
             }
         }
         string GetWesternZodiac(DateTime date)
@@ -56,34 +56,34 @@ namespace BirthdayApp
             int day = date.Day;
             int month = date.Month;
 
-            return (month == 1 && day <= 19) ? "Козоріг" :
-                   (month == 1) ? "Водолій" :
-                   (month == 2 && day <= 18) ? "Водолій" :
-                   (month == 2) ? "Риби" :
-                   (month == 3 && day <= 20) ? "Риби" :
-                   (month == 3) ? "Овен" :
-                   (month == 4 && day <= 19) ? "Овен" :
-                   (month == 4) ? "Телець" :
-                   (month == 5 && day <= 20) ? "Телець" :
-                   (month == 5) ? "Близнюки" :
-                   (month == 6 && day <= 20) ? "Близнюки" :
-                   (month == 6) ? "Рак" :
-                   (month == 7 && day <= 22) ? "Рак" :
-                   (month == 7) ? "Лев" :
-                   (month == 8 && day <= 22) ? "Лев" :
-                   (month == 8) ? "Діва" :
-                   (month == 9 && day <= 22) ? "Діва" :
-                   (month == 9) ? "Терези" :
-                   (month == 10 && day <= 22) ? "Терези" :
-                   (month == 10) ? "Скорпіон" :
-                   (month == 11 && day <= 21) ? "Скорпіон" :
-                   (month == 11) ? "Стрілець" :
-                   (month == 12 && day <= 21) ? "Стрілець" : "Козоріг";
+            return (month == 1 && day <= 19) ? "Capricorn" :
+                   (month == 1) ? "Aquarius" :
+                   (month == 2 && day <= 18) ? "Aquarius" :
+                   (month == 2) ? "Pisces" :
+                   (month == 3 && day <= 20) ? "Pisces" :
+                   (month == 3) ? "Aries" :
+                   (month == 4 && day <= 19) ? "Aries" :
+                   (month == 4) ? "Taurus" :
+                   (month == 5 && day <= 20) ? "Taurus" :
+                   (month == 5) ? "Gemini" :
+                   (month == 6 && day <= 20) ? "Gemini" :
+                   (month == 6) ? "Cancer" :
+                   (month == 7 && day <= 22) ? "Cancer" :
+                   (month == 7) ? "Leo" :
+                   (month == 8 && day <= 22) ? "Leo" :
+                   (month == 8) ? "Virgo" :
+                   (month == 9 && day <= 22) ? "Virgo" :
+                   (month == 9) ? "Libra" :
+                   (month == 10 && day <= 22) ? "Libra" :
+                   (month == 10) ? "Scorpio" :
+                   (month == 11 && day <= 21) ? "Scorpio" :
+                   (month == 11) ? "Sagittarius" :
+                   (month == 12 && day <= 21) ? "Sagittarius" : "Capricorn";
         }
         string GetChineseZodiac(DateTime date)
         {
-            string[] animals = { "Мавпа", "Півень", "Собака", "Свиня", "Щур", "Бик",
-                         "Тигр", "Кролик", "Дракон", "Змія", "Кінь", "Коза" };
+            string[] animals = { "Monkey", "Rooster", "Dog", "Pig", "Rat", "Ox",
+                         "Tiger", "Rabbit", "Dragon", "Snake", "Horse", "Goat" };
             int index = date.Year % 12;
             return animals[index];
         }

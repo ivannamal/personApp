@@ -1,5 +1,4 @@
 ﻿using PersonApp;
-using PersonApp;
 using System;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -64,7 +63,7 @@ namespace PersonApp
 
         private void ValidateEmail(string email)
         {
-            if (!Regex.IsMatch(email, @"^\S+@\S+\.\S+$"))
+            if (string.IsNullOrWhiteSpace(email) || !Regex.IsMatch(email, @"^\S+@\S+\.\S+$"))
                 throw new Exception("Невірний формат електронної пошти.");
         }
 

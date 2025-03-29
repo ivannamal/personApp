@@ -1,0 +1,26 @@
+﻿<Window x:Class="PersonApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PersonApp"
+        mc:Ignorable="d"
+        Title="Person Info" Height="300" Width="400">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel>
+            <TextBox Name="FirstNameBox" Text="First Name" Margin="0,5"/>
+            <TextBox Name="LastNameBox" Text="Last Name" Margin="0,5"/>
+            <TextBox Name="EmailBox" Text="Email" Margin="0,5"/>
+            <DatePicker Name="BirthDatePicker" Margin="0,5"/>
+        </StackPanel>
+
+        <Button Name="ProceedButton" Grid.Row="2" Content="Proceed" IsEnabled="False"
+                Click="ProceedButton_Click" Margin="0,10,0,0"/>
+    </Grid>
+</Window>

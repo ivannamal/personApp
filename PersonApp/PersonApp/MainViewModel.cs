@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PersonApp.Exceptions;
+using System;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -78,11 +79,11 @@ namespace PersonApp
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    ValidateEmail(Email);
-                    ValidateBirthDate(BirthDate.Value);
-                });
+             //   await Task.Run(() =>
+               // {
+                 //   ValidateEmail(Email);
+                   // ValidateBirthDate(BirthDate.Value);
+                //});
 
                 var person = new Person(FirstName, LastName, Email, BirthDate.Value);
 
@@ -92,22 +93,22 @@ namespace PersonApp
                                 $"ChineseSign: {person.ChineseSign}\nIsBirthday: {person.IsBirthday}";
                 MessageBox.Show(result, "Результат");
             }
+            catch (FutureBirthDateException ex)
+            {
+                MessageBox.Show(ex.Message, "Помилка дати");
+            }
+            catch (TooOldBirthDateException ex)
+            {
+                MessageBox.Show(ex.Message, "Помилка дати");
+            }
+            catch (InvalidEmailFormatException ex)
+            {
+                MessageBox.Show(ex.Message, "Помилка пошти");
+            }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Помилка");
+                MessageBox.Show("Невідома помилка: " + ex.Message);
             }
-        }
-
-        private void ValidateEmail(string email)
-        {
-            if (string.IsNullOrWhiteSpace(email) || !Regex.IsMatch(email, @"^\S+@\S+\.\S+$"))
-                throw new Exception("Невірний формат електронної пошти.");
-        }
-
-        private void ValidateBirthDate(DateTime date)
-        {
-            if (date > DateTime.Now)
-                throw new Exception("Дата народження не може бути в майбутньому.");
         }
 
         private void OnPropertyChanged(string propertyName) =>

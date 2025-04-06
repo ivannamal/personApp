@@ -1,7 +1,9 @@
-﻿using System;
+﻿using PersonApp.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace PersonApp
@@ -20,6 +22,15 @@ namespace PersonApp
 
         public Person(string firstName, string lastName, string email, DateTime birthDate)
         {
+            if (birthDate > DateTime.Today)
+                throw new FutureBirthDateException();
+
+            if (birthDate < new DateTime(1900, 1, 1))
+                throw new TooOldBirthDateException();
+
+            if (!Regex.IsMatch(email, @"^\S+@\S+\.\S+$"))
+                throw new InvalidEmailFormatException();
+
             FirstName = firstName;
             LastName = lastName;
             Email = email;

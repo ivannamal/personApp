@@ -15,7 +15,6 @@ namespace PersonApp
         {
             if (DataContext is EditUserViewModel viewModel)
             {
-                // Призначаємо дію закриття вікна через ViewModel
                 viewModel.CloseAction = (result) =>
                 {
                     DialogResult = result;
@@ -24,7 +23,7 @@ namespace PersonApp
             }
         }
 
-        // Альтернативно, якщо потрібно отримувати EditedPerson напряму через вікно:
+        
         public Person EditedPerson => (DataContext as EditUserViewModel)?.EditedPerson;
     }
 }

@@ -22,7 +22,7 @@ namespace PersonApp
         private void LoadOrInitializeData()
         {
             persons = PersonDataManager.Load();
-            // Якщо даних немає – створюємо 50 демонстраційних записів
+            
             if (persons.Count == 0)
             {
                 persons = new List<Person>();
@@ -32,7 +32,7 @@ namespace PersonApp
                     string firstName = $"Ім'я{i}";
                     string lastName = $"Прізвище{i}";
                     string email = $"user{i}@example.com";
-                    // Генеруємо дату народження від 1960 до 2010 року
+                    
                     DateTime dob = new DateTime(rnd.Next(1960, 2010), rnd.Next(1, 13), rnd.Next(1, 28));
                     try
                     {
@@ -47,7 +47,6 @@ namespace PersonApp
             }
         }
 
-        // Обробник кнопки "Додати"
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             EditUserWindow addWindow = new EditUserWindow();
@@ -61,7 +60,6 @@ namespace PersonApp
             }
         }
 
-        // Обробник кнопки "Редагувати"
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
             if (dgUsers.SelectedItem is Person selectedPerson)
@@ -86,7 +84,6 @@ namespace PersonApp
             }
         }
 
-        // Обробник кнопки "Видалити" залишається без змін
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             if (dgUsers.SelectedItem is Person selectedPerson)
@@ -101,7 +98,6 @@ namespace PersonApp
             }
         }
 
-        // Метод сортування (приклад)
         private void SortByFirstName()
         {
             var sorted = persons.OrderBy(p => p.FirstName).ToList();

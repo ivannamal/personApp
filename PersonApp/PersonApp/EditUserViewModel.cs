@@ -39,13 +39,11 @@ namespace PersonApp
             set { _birthDate = value; OnPropertyChanged(nameof(BirthDate)); }
         }
 
-        // Властивість, в яку буде записано створений або відредагований об'єкт Person
         public Person EditedPerson { get; private set; }
 
         public RelayCommand SaveCommand { get; }
         public RelayCommand CancelCommand { get; }
 
-        // Дія для закриття вікна (призначається у вікні)
         public Action<bool?> CloseAction { get; set; }
 
         public EditUserViewModel()
@@ -66,7 +64,6 @@ namespace PersonApp
         {
             try
             {
-                // Створення нового об'єкта Person з перевіркою даних.
                 var person = new Person(FirstName, LastName, Email, BirthDate.Value);
                 EditedPerson = person;
                 CloseAction?.Invoke(true);

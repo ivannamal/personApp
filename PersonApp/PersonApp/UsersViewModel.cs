@@ -51,10 +51,9 @@ namespace PersonApp
 
         private void LoadOrInitializeData()
         {
-            // Завантаження даних із файлу через PersonDataManager
+            
             List<Person> personsList = PersonDataManager.Load();
 
-            // Якщо даних немає – створюємо 50 демонстраційних записів
             if (personsList.Count == 0)
             {
                 personsList = new List<Person>();
@@ -64,7 +63,7 @@ namespace PersonApp
                     string firstName = $"Ім'я{i}";
                     string lastName = $"Прізвище{i}";
                     string email = $"user{i}@example.com";
-                    // Генеруємо дату народження від 1960 до 2010 року
+                   
                     DateTime dob = new DateTime(rnd.Next(1960, 2010), rnd.Next(1, 13), rnd.Next(1, 28));
                     try
                     {
@@ -82,7 +81,7 @@ namespace PersonApp
 
         private void AddPerson()
         {
-            // Відкриваємо вікно додавання користувача
+            
             var editVm = new EditUserViewModel();
             var editWindow = new EditUserWindow
             {
@@ -104,7 +103,6 @@ namespace PersonApp
         {
             if (SelectedPerson != null)
             {
-                // Ініціалізуємо EditUserViewModel початковими даними вибраного користувача
                 var editVm = new EditUserViewModel
                 {
                     FirstName = SelectedPerson.FirstName,

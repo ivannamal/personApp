@@ -22,8 +22,17 @@ namespace PersonApp
                 };
             }
         }
+        public EditUserWindow(Person existingPerson) : this()
+        {
+            if (DataContext is EditUserViewModel vm && existingPerson != null)
+            {
+                vm.FirstName = existingPerson.FirstName;
+                vm.LastName = existingPerson.LastName;
+                vm.Email = existingPerson.Email;
+                vm.BirthDate = existingPerson.BirthDate;
+            }
+        }
 
-        
         public Person EditedPerson => (DataContext as EditUserViewModel)?.EditedPerson;
     }
 }

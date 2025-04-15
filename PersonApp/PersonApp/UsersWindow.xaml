@@ -6,6 +6,10 @@
         xmlns:local="clr-namespace:PersonApp"
         mc:Ignorable="d"
         Title="Список користувачів" Height="450" Width="800">
+    <Window.DataContext>
+        <local:UsersViewModel/>
+    </Window.DataContext>
+
     <Grid Margin="10">
         <StackPanel>
             <DataGrid x:Name="dgUsers" AutoGenerateColumns="False" Height="300"
@@ -17,10 +21,10 @@
                     <DataGridTextColumn Header="Прізвище" Binding="{Binding LastName}" />
                     <DataGridTextColumn Header="Email" Binding="{Binding Email}" />
                     <DataGridTextColumn Header="Дата народження" Binding="{Binding BirthDate, StringFormat=d}" />
-                    <DataGridCheckBoxColumn Header="IsAdult" Binding="{Binding IsAdult}" />
+                    <DataGridCheckBoxColumn Header="IsAdult" Binding="{Binding IsAdult, Mode=OneWay}" />
                     <DataGridTextColumn Header="SunSign" Binding="{Binding SunSign}" />
                     <DataGridTextColumn Header="ChineseSign" Binding="{Binding ChineseSign}" />
-                    <DataGridCheckBoxColumn Header="IsBirthday" Binding="{Binding IsBirthday}" />
+                    <DataGridCheckBoxColumn Header="IsBirthday" Binding="{Binding IsBirthday, Mode=OneWay}" />
                 </DataGrid.Columns>
             </DataGrid>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">

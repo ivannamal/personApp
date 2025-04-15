@@ -20,6 +20,8 @@ namespace PersonApp
         public string ChineseSign { get; }
         public bool IsBirthday { get; }
 
+        public Person() { }
+
         public Person(string firstName, string lastName, string email, DateTime birthDate)
         {
             if (birthDate > DateTime.Today)
